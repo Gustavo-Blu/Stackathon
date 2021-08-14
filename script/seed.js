@@ -62,6 +62,7 @@ async function seed() {
       imageUrl:
         'https://learndotresources.s3.amazonaws.com/workshop/58cff0e769468300041ef9fd/the_slip.jpeg',
     }),
+    Playlist.create({ title: 'All Songs' }),
   ]);
 
   // songs.map(async (song) => {
@@ -99,6 +100,7 @@ async function seed() {
       'No Nations (Instrumentals)': playlists[2],
       'Ghosts I-IV': playlists[3],
       'The Slip': playlists[4],
+      'All Songs': playlists[5],
     },
   };
 
@@ -111,6 +113,7 @@ async function seed() {
       artistId: codeBase.artists[songs[i].artist].id,
     });
     await newSong.addPlaylist(codeBase.playlists[songs[i].playlist].id);
+    await newSong.addPlaylist(codeBase.playlists['All Songs'].id);
     // artistId: codeBase.artists[songs[i].artist].id,
   }
 
