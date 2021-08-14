@@ -1,6 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Route, Switch, Redirect } from 'react-router-dom';
+import AllArtists from './components/AllArtists';
+import AllPlaylists from './components/AllPlaylists';
+import AllSongs from './components/AllSongs';
 import { Login, Signup } from './components/AuthForm';
 import Home from './components/Home';
 import { me } from './store';
@@ -21,6 +24,9 @@ class Routes extends Component {
         {isLoggedIn ? (
           <Switch>
             <Route path="/home" component={Home} />
+            <Route path="/songs" component={AllSongs} />
+            <Route path="/artists" component={AllArtists} />
+            <Route path="/playlists" component={AllPlaylists} />
             <Redirect to="/home" />
           </Switch>
         ) : (

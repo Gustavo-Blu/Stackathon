@@ -1,11 +1,22 @@
 /* @import '~bootstrap/dist/css/bootstrap.min.css'; */
 
+@keyframes slideInFromRight {
+  0% {
+    transform: translateY(100%);
+    opactiy: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
 
 body {
   font-family: sans-serif;
   background-color: rgb(37, 37, 37);
   color: aliceblue;
   box-sizing: content-box;
+  z-index: 0;
 }
 
 body::-webkit-scrollbar {
@@ -27,7 +38,7 @@ a {
 }
 
 .main {
-  margin-top: 140px;
+  margin-top: 100px;
 }
 
 label {
@@ -40,18 +51,19 @@ nav a {
 }
 
 #navbar {
-  background-color: rgb(37, 37, 37);
+  background-color: rgb(58, 58, 58);
   position: fixed;
-  /* overflow: hidden; */
   top: 0;
+  left: 0;
   width: 100%;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   border: 2px cornsilk;
   display: flex;
+  flex-wrap: nowrap;
   justify-content: space-between;
-  align-items: baseline;
-  /* border-bottom-color: cornsilk; */
+  align-items: center;
+  z-index: 1;
 }
 
 #dropdown {
@@ -59,6 +71,15 @@ nav a {
 }
 #dropdown:hover {
   cursor: pointer;
+}
+
+#profile-pic {
+  margin-left: 10px;
+  margin-right: 10px;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border-radius: 30px;
 }
 
 form div {
@@ -103,4 +124,32 @@ h2 {
   margin-bottom: 8px;
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
+}
+
+#visible-menu {
+  transform: translateY(20%);
+}
+
+#hidden-menu {
+  transform: translateY(-200px);
+}
+
+.menu {
+  position: fixed;
+  /* width: 80px; */
+  right: 0;
+  border: solid white 2px;
+  margin-right: 20px;
+  border-radius: 20px;
+  border: 3px solid black;
+  transition: transform 0.5s ease;
+  background-color: black;
+  z-index: 0;
+}
+
+.menu Button {
+  align-self: left;
+  margin-right: 5px;
+  color: aliceblue;
+  background-color: rgb(58, 58, 58);
 }
