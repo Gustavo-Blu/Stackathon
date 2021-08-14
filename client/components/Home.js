@@ -1,26 +1,54 @@
-import React from 'react'
-import {connect} from 'react-redux'
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { fetchSongs } from '../store/allSongs';
 
 /**
  * COMPONENT
  */
-export const Home = props => {
-  const {username} = props
+class Home extends React.Component {
+  componentDidMount() {
+    this.props.getSongs();
+  }
 
-  return (
-    <div>
-      <h3>Welcome, {username}</h3>
-    </div>
-  )
+  render() {
+    const { songs } = this.props;
+    return (
+      <div className="main">
+        <h1>Welcome, </h1>
+        <h2>All Songs</h2>
+
+        <div className="homePage">
+          {songs[1] &&
+            songs.map((song) => {
+              return (
+                <div className="container" key={song.id}>
+                  <img className="containerImage" src={song.imageUrl} />
+                  <div className="info">
+                    <div>{song.title}</div>
+                    <div>By: {song.artist.name}</div>
+                    <div>Genre: {song.genre}</div>
+                  </div>
+                </div>
+              );
+            })}
+        </div>
+      </div>
+    );
+  }
 }
 
 /**
  * CONTAINER
  */
-const mapState = state => {
+const mapState = (state) => {
   return {
-    username: state.auth.username
-  }
-}
+    // username: state.auth.username,
+    songs: state.songs,
+  };
+};
 
-export default connect(mapState)(Home)
+const mapDispatch = (dispatch) => ({
+  getSongs: () => dispatch(fetchSongs()),
+});
+
+export default connect(mapState, mapDispatch)(Home);

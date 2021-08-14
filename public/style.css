@@ -1,9 +1,33 @@
+/* @import '~bootstrap/dist/css/bootstrap.min.css'; */
+
+
 body {
   font-family: sans-serif;
+  background-color: rgb(37, 37, 37);
+  color: aliceblue;
+  box-sizing: content-box;
 }
+
+body::-webkit-scrollbar {
+  background-color: dimgray;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: floralwhite;
+}
+
+body::-webkit-scrollbar-button {
+  background-color: floralwhite;
+}
+
 
 a {
   text-decoration: none;
+  color: white;
+}
+
+.main {
+  margin-top: 140px;
 }
 
 label {
@@ -15,7 +39,68 @@ nav a {
   margin: 1em;
 }
 
+#navbar {
+  background-color: rgb(37, 37, 37);
+  position: fixed;
+  /* overflow: hidden; */
+  top: 0;
+  width: 100%;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border: 2px cornsilk;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  /* border-bottom-color: cornsilk; */
+}
+
+#dropdown {
+  margin-right: 20px;
+}
+#dropdown:hover {
+  cursor: pointer;
+}
+
 form div {
   margin: 1em;
   display: inline-block;
+}
+
+h2 {
+  text-align: center;
+}
+
+.homePage {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.container {
+  overflow: hidden;
+  margin: 5px;
+  padding: 0%;
+  width: 200px;
+  height: 400px;
+  border: 4px solid black;
+  border-radius: 10px;
+}
+
+.container .info {
+  display: flex;
+  flex-wrap: wrap;
+  word-wrap: break-word;
+  text-align: center;
+  flex-direction: column;
+}
+
+.containerImage {
+  /* position: relative; */
+  height: 70%;
+  width: 100%;
+  margin: 0%;
+  padding: 0%;
+  margin-bottom: 8px;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
 }

@@ -1,15 +1,19 @@
-import React from 'react'
-import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
-import {logout} from '../store'
+import React from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { logout } from '../store';
 
-const Navbar = ({handleClick, isLoggedIn}) => (
-  <div>
-    <h1>FS-App-Template</h1>
+const Navbar = ({ handleClick, isLoggedIn, user }) => (
+  <div id="navbar">
+    <Link to="/home">
+      <h1 style={{ color: 'lightblue' }}>Nano</h1>
+    </Link>
     <nav>
       {isLoggedIn ? (
         <div>
           {/* The navbar will show these links after you log in */}
+          <p>Welcome {user.username}</p>
+          <img src={user.imageUrl} />
           <Link to="/home">Home</Link>
           <a href="#" onClick={handleClick}>
             Logout
@@ -20,28 +24,30 @@ const Navbar = ({handleClick, isLoggedIn}) => (
           {/* The navbar will show these links before you log in */}
           <Link to="/login">Login</Link>
           <Link to="/signup">Sign Up</Link>
+          <img id="dropdown" src="/menu-btn.svg" />
         </div>
       )}
     </nav>
-    <hr />
+    {/* <hr /> */}
   </div>
-)
+);
 
 /**
  * CONTAINER
  */
-const mapState = state => {
+const mapState = (state) => {
   return {
-    isLoggedIn: !!state.auth.id
-  }
-}
+    isLoggedIn: !!state.auth.id,
+    user: state.auth,
+  };
+};
 
-const mapDispatch = dispatch => {
+const mapDispatch = (dispatch) => {
   return {
     handleClick() {
-      dispatch(logout())
-    }
-  }
-}
+      dispatch(logout());
+    },
+  };
+};
 
-export default connect(mapState, mapDispatch)(Navbar)
+export default connect(mapState, mapDispatch)(Navbar);
