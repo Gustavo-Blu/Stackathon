@@ -4,10 +4,8 @@ const db = require('../db');
 const Song = db.define('song', {
   title: {
     type: Sequelize.STRING,
-    validate: {
-      allowNull: false,
-      isEmpty: false,
-    },
+    isNull: false,
+    notEmpty: true,
   },
   imageUrl: {
     type: Sequelize.STRING,

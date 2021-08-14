@@ -1,3 +1,5 @@
+'use strict';
+
 const fs = require('fs');
 const {
   db,
@@ -40,47 +42,47 @@ const seed = async () => {
       'https://learndotresources.s3.amazonaws.com/workshop/58cff0e769468300041ef9fd/the_slip.jpeg',
   });
 
-  const artists = {
-    'Dexter Britain': dexter,
-    'Nine Inch Nails': nin,
-    'Jets Overhead': jets,
-  };
+  // const artists = {
+  //   'Dexter Britain': dexter,
+  //   'Nine Inch Nails': nin,
+  //   'Jets Overhead': jets,
+  // };
 
-  const playlists = {
-    'Creative Commons Volume 2': ccv2,
-    Zenith: zenith,
-    'No Nations (Instrumentals)': noNations,
-    'Ghosts I-IV': ghosts,
-    'The Slip': theSlip,
-  };
+  // const playlists = {
+  //   'Creative Commons Volume 2': ccv2,
+  //   Zenith: zenith,
+  //   'No Nations (Instrumentals)': noNations,
+  //   'Ghosts I-IV': ghosts,
+  //   'The Slip': theSlip,
+  // };
 
-  await Promise.all(
-    songs.map((song) => {
-      Song.create({
-        name: song.name,
-        audioUrl: song.audioUrl,
-        genre: song.genre,
-        artistId: artists[song.artist].id,
-      });
-      let playlist = await Playlist.findByPk(playlists[song.playlist].id);
-      await playlist.addSong(song);
-      // albumId: albums[song.album].id,
-    })
-  );
+  // await Promise.all(
+  //   songs.map((song) => {
+  //     Song.create({
+  //       name: song.name,
+  //       audioUrl: song.audioUrl,
+  //       genre: song.genre,
+  // artistId: artists[song.artist].id,
+  // });
+  // let playlist = Playlist.findByPk(playlists[song.playlist].id);
+  // playlist.addSong(song);
+  // albumId: albums[song.album].id,
+  // })
+  // );
 
   db.close();
   console.log(`
-    Seeding successful!
-    Juke is now ready to rock!
+  Seeding successful!
+  Juke is now ready to rock!
   `);
 };
 
 seed().catch((err) => {
   db.close();
   console.log(`
-    Error seeding:
-    ${err.message}
-    ${err.stack}
+  Error seeding:
+  ${err.message}
+  ${err.stack}
   `);
 });
 
