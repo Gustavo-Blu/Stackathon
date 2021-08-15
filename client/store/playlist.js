@@ -22,7 +22,7 @@ export const fetchPlaylist = (id) => {
 };
 
 //reducer
-export default function (state = [], action) {
+export default function (state = {}, action) {
   switch (action.type) {
     case SET_PLAYLIST:
       return action.playlist;

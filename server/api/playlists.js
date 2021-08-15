@@ -36,6 +36,7 @@ router.get('/:id', async (req, res, next) => {
       where: {
         id: req.params.id,
       },
+      include: [{ model: Song, include: [{ model: Artist }] }],
     });
     res.status(200).json(playlist);
   } catch (error) {

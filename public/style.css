@@ -153,3 +153,7 @@ h2 {
   color: aliceblue;
   background-color: rgb(58, 58, 58);
 }
+
+.singleImage {
+  width: 100%;
+}
